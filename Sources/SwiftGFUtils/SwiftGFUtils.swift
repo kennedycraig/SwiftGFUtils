@@ -12,19 +12,19 @@ import SwiftUI
 
 typealias GFGeoHash = String
 
-struct GeoHashPair: Hashable {
+public struct GeoHashPair: Hashable {
     var id: UUID = UUID()
     var startValue: GFGeoHash
     var endValue: GFGeoHash
 }
 
-class GeoHashUtils {
+public class GeoHashUtils {
     
     
     let METERS_PER_DEGREE_LATITUDE = Double(110574)
     let BITS_PER_GEOHASH_CHAR: UInt = 5
     let BITS_PER_BASE32_CHAR: UInt = 5
-    static let GF_DEFAULT_PRECISION: Int = 10
+    public static let GF_DEFAULT_PRECISION: Int = 10
     static let GF_MAX_PRECISION: UInt = 22
     
 
@@ -44,9 +44,9 @@ class GeoHashUtils {
         // Restrict creation outside the class
     }
     
-    static let geoHashUtils = GeoHashUtils()
+    public static let geoHashUtils = GeoHashUtils()
 
-    func queryBoundsForLocation(location: CLLocationCoordinate2D, radius: Double) -> [GeoHashPair] {
+    public func queryBoundsForLocation(location: CLLocationCoordinate2D, radius: Double) -> [GeoHashPair] {
         var queryBounds: [GeoHashPair] = []
         let queries = queriesForLocation(center: location, radius: radius)
         for query in queries {
@@ -56,11 +56,11 @@ class GeoHashUtils {
         return queryBounds
     }
     
-    func getGeoHash(location: CLLocation, precision: Int=GF_DEFAULT_PRECISION)->String{
+    public func getGeoHash(location: CLLocation, precision: Int=GF_DEFAULT_PRECISION)->String{
         return newWithLocation(coordinate: location.coordinate, precision: UInt(precision))
     }
     
-    func distanceFromLocation(startLocation: CLLocation, endLocation: CLLocation) -> Double {
+    public func distanceFromLocation(startLocation: CLLocation, endLocation: CLLocation) -> Double {
         return endLocation.distance(from: startLocation)
     }
     
