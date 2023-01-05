@@ -10,12 +10,12 @@ import CoreLocation
 import MapKit
 import SwiftUI
 
-typealias GFGeoHash = String
+public typealias GFGeoHash = String
 
 public struct GeoHashPair: Hashable {
     var id: UUID = UUID()
-    var startValue: GFGeoHash
-    var endValue: GFGeoHash
+    public var startValue: GFGeoHash
+    public var endValue: GFGeoHash
 }
 
 public class GeoHashUtils {
